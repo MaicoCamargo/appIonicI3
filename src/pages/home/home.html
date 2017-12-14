@@ -1,35 +1,37 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Passagens.Ionic2
+      Tuiller
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-grid>
-  <ion-row>
-    <ion-col col-2>
-      <ion-icon ios="ios-card" md="md-card"></ion-icon>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col col-10>
-      <ion-title>
-        Passagens.Ionic2
-      </ion-title>
-
-      simplificando sua maneira de adquirir passagens, para sua viagem
-    </ion-col>
-  </ion-row>
-</ion-grid>
 
 <ion-content padding>
 
-  <ion-icon name="card"></ion-icon>
-
-  <!-- Advanced: explicity set the icon for each platform -->
 
 
-  <button ion-button full>Comprar Passagens</button>
+  <ion-grid>
 
-  <button ion-button block>Minhas Passagens </button>
+    <p><ion-icon name="md-at"></ion-icon> --- >  veja o que ta rolando sobre qualquer assunto do seu interesse</p>
+    <br>
+
+    <ion-row>
+      <ion-col col-6="">
+        <button ion-button block>Logar</button>
+      </ion-col>
+      <ion-col col-6="">
+        <button ion-button full>Registrar-se</button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+  <form #pesquisar="ngForm">
+    <ion-item>
+      <ion-label color="primary" floating># pesquisar por</ion-label>
+      <ion-input #pesquisa type="text"></ion-input>
+    </ion-item>
+    <button ion-button block (click)="pesquisarHashTag(pesquisa)">Pesquisar por HashTag</button>
+  </form>
+
 </ion-content>
