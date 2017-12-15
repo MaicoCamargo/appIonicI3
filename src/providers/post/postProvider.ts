@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {Observable} from "rxjs/Observable";
+import {PostModel} from "../../model/PostModel";
 import {Http} from "@angular/http";
 
 /*
@@ -11,21 +12,20 @@ import {Http} from "@angular/http";
 @Injectable()
 export class PostProvider {
 
-  private  readonly URL_BACKEND = "localhost:8080/post";
-
-
-  public headers: Headers;
-  //protected http: Http;
-  private http : HttpClient;
-  constructor(http: HttpClient) {
+  private  readonly URL_BACKEND = "http://localhost:8080/post/";
+  private http : Http;
+  constructor(http: Http) {
     console.log('Hello PostProvider Provider');
     this.http = http;
-    this.headers = new Headers();
-    this.headers.append('Content-Type', 'application/json');
+
   }
 
-  getPostPorHashTag(busca :string){
-    return this.http.get(this.URL_BACKEND + 'buscarPor/'+busca);
+  getPostPorHashTag(busca :string) {
+   return this.http.get(this.URL_BACKEND + 'buscarPor/'+busca);
   }
 
+
+  realizarNovoPost(novoPost: PostModel) {
+    return this.http.post(this.URL_BACKEND +'novoPost',novoPost);
+  }
 }

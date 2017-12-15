@@ -1,0 +1,100 @@
+<!--
+<ion-header>
+  <ion-navbar>
+    <ion-title align-title="center">Tuiller </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="login-content" padding>
+  <ion-col>
+    <img src="assets/imagens/politecnico.PNG"/>
+  </ion-col>
+    <div class="login-box">
+      <form (ngSubmit)="login(registerForm)" #registerForm="ngForm">
+        <ion-item>
+          <ion-label>Siape</ion-label>
+          <ion-input type="number" name="siape" [(ngModel)]="usuarioFormulario.siape" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Senha</ion-label>
+          <ion-input type="password"  name="senha" [(ngModel)]="usuarioFormulario.senha" required></ion-input>
+        </ion-item>
+        <ion-row>
+          <ion-col class="signup-col">
+            <button ion-button color="primary" block type="submit" [disabled]="!registerForm.form.valid">Entrar</button>
+            <button ion-button class="register-btn" block clear href="#" >Criar nova conta</button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </div>
+</ion-content>
+-->
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Tuiller
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <p><ion-icon name="md-at"></ion-icon> --- >  veja o que ta rolando sobre qualquer assunto do seu interesse</p>
+    <br>
+
+    <ion-row>
+      <ion-col>
+          <button ion-button block (click)="abreFormPost()">Postar</button>
+          <button ion-button block>Ver meu Post</button>
+          <button ion-button block>Posts da Galera</button>
+      </ion-col>
+    </ion-row>
+   <div *ngIf="postar">
+     <form #formPostar="ngForm" (ngSubmit)="cadastraNovoPost()">
+       <ion-item>
+         <ion-label color="primary" floating>Estou Pensando em...</ion-label>
+         <ion-input [(ngModel)]="novoPost.post" name="post" type="text"></ion-input>
+       </ion-item>
+       <ion-item>
+         <ion-label color="primary" floating>Foto</ion-label>
+         <ion-input [(ngModel)]="novoPost.imagem" name="imagem" type="text"></ion-input>
+       </ion-item>
+       <ion-item>
+         <ion-label color="primary" floating>Hashtag</ion-label>
+         <ion-input [(ngModel)]="novoPost.hashtag" name="hashtag" type="text"></ion-input>
+       </ion-item>
+       <ion-item>
+         <ion-label color="primary" floating>Email</ion-label>
+         <ion-input [(ngModel)]="novoPost.usuario.email" name="email" type="text"></ion-input>
+       </ion-item>
+       <ion-item>
+         <ion-label color="primary" floating>Celular</ion-label>
+         <ion-input [(ngModel)]="novoPost.usuario.celular" name="celular" type="text"></ion-input>
+       </ion-item>
+       <ion-row>
+          <ion-col col-8>
+            <button ion-button block  type="submit">Postar :D</button>
+          </ion-col>
+          <ion-col col-4="">
+            <button ion-button block  (click)="abreFormPost()">Cancelar</button>
+          </ion-col>
+       </ion-row>
+     </form>
+
+   </div>
+
+  </ion-grid>
+  <p text-center="">-------------------</p>
+
+  <form #pesquisar="ngForm">
+    <ion-item>
+      <ion-label color="primary" floating># pesquisar por</ion-label>
+      <ion-input #pesquisa type="text"></ion-input>
+    </ion-item>
+    <button ion-button block (click)="pesquisarHashTag(pesquisa.value)">Pesquisar por HashTag</button>
+  </form>
+
+  <p *ngFor="let po of posts">{{ po.post }}</p>
+
+</ion-content>
+
