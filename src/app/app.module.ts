@@ -38,6 +38,7 @@ import {AllPostsPage} from "../pages/all-posts/all-posts";
     Whisper,
     MeusPostPage,
     NewPostPage,
+    AllPostsPage
 
   ],
   providers: [
