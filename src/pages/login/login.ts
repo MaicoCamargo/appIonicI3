@@ -8,6 +8,7 @@ import {UsuarioProvider} from "../../providers/usuario/usuario";
 import {PostProvider} from "../../providers/post/postProvider";
 import {NewPostPage} from "../new-post/new-post";
 import {MeusPostPage} from "../meus-post/meus-post";
+import {AllPostsPage} from "../all-posts/all-posts";
 
 @IonicPage()
 @Component({
@@ -20,12 +21,23 @@ export class LoginPage implements OnInit{
 
   loading: Loading;
   posts : PostModel[];
-  logando = new UsuarioModel();
 
   constructor(public storage: Storage, public navCtrl: NavController,
                public menu: MenuController,private _postService : PostProvider,
                private _userService : UsuarioProvider, private nav: NavController,
                private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
+  }
+
+  pageAllPost(){
+    this.nav.push(AllPostsPage);
+  }
+
+
+  /**
+   * encaminha para a pagina com o campo para buscar um post
+   */
+  pageVerMeuPost(){
+    this.nav.push(MeusPostPage);
   }
 
   pesquisarHashTag(termoPesquisa){

@@ -13,6 +13,7 @@ import {PostProvider} from "../providers/post/postProvider";
 import {UsuarioProvider} from "../providers/usuario/usuario";
 import {MeusPostPage} from "../pages/meus-post/meus-post";
 import {NewPostPage} from "../pages/new-post/new-post";
+import {AllPostsPage} from "../pages/all-posts/all-posts";
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import {NewPostPage} from "../pages/new-post/new-post";
     Whisper,
     MeusPostPage,
     NewPostPage,
+    AllPostsPage
 
   ],
   imports: [

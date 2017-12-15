@@ -28,4 +28,8 @@ export class PostProvider {
   realizarNovoPost(novoPost: PostModel) {
     return this.http.post(this.URL_BACKEND +'novoPost',novoPost);
   }
+
+  getPostPorIdentificador(identificador: string) {
+    return  this.http.get(this.URL_BACKEND + 'identificadorDoPost/'+ identificador);
+  }
 }

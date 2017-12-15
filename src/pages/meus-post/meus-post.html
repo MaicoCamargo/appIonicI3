@@ -14,5 +14,25 @@
 
 
 <ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      Identificador
+    </ion-card-header>
+    <ion-card-content>
+      Informe o identificador que foi recebido por email ou SMS
+      Somente com isso será possivel visualizar o que está rolando com seu #whisper
+    </ion-card-content>
+  </ion-card>
+
+  <form #pesquisarMeuPost="ngForm">
+    <ion-item>
+      <ion-label color="primary" floating>meu identificador: </ion-label>
+      <ion-input #identificador type="text"></ion-input>
+    </ion-item>
+    <button ion-button block (click)="buscarPostPorIdentificador(identificador.value)">Pesquisar por HashTag</button>
+  </form>
+
+
+  <p *ngIf="meuPost != null" > {{ meuPost.hashtag }}</p>
 
 </ion-content>
