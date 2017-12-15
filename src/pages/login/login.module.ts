@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import { IonicErrorHandler, IonicPageModule, NavController } from 'ionic-angular';
+import { IonicPageModule} from 'ionic-angular';
 import { LoginPage } from './login';
+
 
 @NgModule({
   declarations: [

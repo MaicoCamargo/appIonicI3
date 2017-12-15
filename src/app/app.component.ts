@@ -9,7 +9,7 @@ import {MeusPostPage} from "../pages/meus-post/meus-post";
 @Component({
   templateUrl: 'app.html'
 })
-export class Infraestrutura {
+export class Whisper {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = 'LoginPage';

@@ -6,6 +6,8 @@ import {UsuarioModel} from "../../model/UsuarioModel";
 import {PostModel} from "../../model/PostModel";
 import {UsuarioProvider} from "../../providers/usuario/usuario";
 import {PostProvider} from "../../providers/post/postProvider";
+import {NewPostPage} from "../new-post/new-post";
+import {MeusPostPage} from "../meus-post/meus-post";
 
 @IonicPage()
 @Component({
@@ -20,37 +22,21 @@ export class LoginPage implements OnInit{
   posts : PostModel[];
   logando = new UsuarioModel();
 
-  postar : boolean = false;
-
-  novoPost = new PostModel();//obj do novo post
-
   constructor(public storage: Storage, public navCtrl: NavController,
-               public menu: MenuController,private _postService : PostProvider, private _userService : UsuarioProvider,
-               private nav: NavController,
-               private alertCtrl: AlertController,
-               private loadingCtrl: LoadingController) {
+               public menu: MenuController,private _postService : PostProvider,
+               private _userService : UsuarioProvider, private nav: NavController,
+               private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
   }
-
-  cadastraNovoPost(){
-    console.log(this.novoPost);
-    this._postService.realizarNovoPost(this.novoPost).subscribe(retorno => {
-      if (retorno.ok){
-        console.log("postado");
-      }else {
-        console.log('erro');
-      }
-
-    })
-
-  }
-
 
   pesquisarHashTag(termoPesquisa){
     this._postService.getPostPorHashTag(termoPesquisa).subscribe(retorno => { this.posts = retorno.json()});
   }
 
-  abreFormPost(){
-    this.postar= !this.postar;
+  /**
+   * navega para a pagina que tera sera realizado o post
+   */
+  public novoPost(){
+    this.nav.push(NewPostPage);
   }
 
 
@@ -68,12 +54,6 @@ export class LoginPage implements OnInit{
     // this.menu.swipeEnable(true, 'menu1');
   }
 
-
-
-  // desse jeito se chama uma pagina
-  /*public createAccount() {
-    this.nav.push(HomePage);
-  }*/
 
   showLoading() {
     this.loading = this.loadingCtrl.create({
