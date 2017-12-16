@@ -2,9 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NavController, AlertController, LoadingController, Loading, IonicPage, MenuController} from 'ionic-angular';
 
 import { Storage } from '@ionic/storage';
-import {UsuarioModel} from "../../model/UsuarioModel";
 import {PostModel} from "../../model/PostModel";
-import {UsuarioProvider} from "../../providers/usuario/usuario";
 import {PostProvider} from "../../providers/post/postProvider";
 import {NewPostPage} from "../new-post/new-post";
 import {MeusPostPage} from "../meus-post/meus-post";
@@ -22,10 +20,9 @@ export class LoginPage implements OnInit{
   loading: Loading;
   posts : PostModel[];
 
-  constructor(public storage: Storage, public navCtrl: NavController,
-               public menu: MenuController,private _postService : PostProvider,
-               private _userService : UsuarioProvider, private nav: NavController,
-               private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
+  constructor(public storage: Storage,public menu: MenuController,
+              private _postService : PostProvider, private nav: NavController,
+              private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
   }
 
   limparPesquisa(){

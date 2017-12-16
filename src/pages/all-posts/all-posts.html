@@ -10,6 +10,37 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
+
+  <ion-card *ngIf="usuarioSession == null">
+    <p text-center="">Logar...</p>
+    <img src="img/advance-card-map-madison.png"><!--da pra por uma foto aqui -->
+    <ion-fab right top>
+      <button ion-fab>
+        <ion-icon name="md-person"></ion-icon>
+      </button>
+    </ion-fab>
+
+    <form #formLogar="ngForm">
+      <ion-item>
+        <ion-icon name="logo-freebsd-devil" item-start large></ion-icon>
+        <ion-label color="primary" floating>@usuario </ion-label>
+        <ion-input  type="text" #nickname name="nickname"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="ios-key" item-left large ></ion-icon>
+        <ion-label color="primary" floating>Senha</ion-label>
+        <ion-input  type="text" #senha ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <span item-end>
+          <button (click)="loginUser(nickname.value,senha.value)" ion-button icon-left clear item-end><ion-icon name="ios-log-in"></ion-icon>Logar</button>
+        </span>
+      </ion-item>
+    </form>
+  </ion-card>
+
 <p>Wisters mais próximos</p>
 
 <ion-grid>
@@ -19,7 +50,7 @@
         <p>Local: <strong>Santa Maria</strong> </p>
       </ion-item>
       <ion-card-content>
-        <p>Whisper: {{ post.post_ }} </p>
+        <p>Whisper: {{ post.post_ }} - {{ post.idPost }} </p>
       </ion-card-content>
       <ion-item *ngIf="post.imagem != null" >
         <ion-card item-start>
@@ -30,7 +61,7 @@
         <ion-col>
           <button ion-button icon-left clear small>
             <ion-icon name="thumbs-up"></ion-icon>
-            <div>Reagir</div>
+            <div (click)="modalReagir(post.idPost)">Reagir</div>
           </button>
         </ion-col>
         <ion-col>

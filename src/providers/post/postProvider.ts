@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {Observable} from "rxjs/Observable";
+
 import {PostModel} from "../../model/PostModel";
 import {Http} from "@angular/http";
+import {UsuarioModel} from "../../model/UsuarioModel";
 
 /*
   Generated class for the PostProvider provider.
@@ -12,12 +13,26 @@ import {Http} from "@angular/http";
 @Injectable()
 export class PostProvider {
 
-  private  readonly URL_BACKEND = "http://localhost:8080/post/";
+  //private  readonly URL_BACKEND = "http://localhost:8080/post/";
+  private  readonly URL_BACKEND = "http://192.168.2.18:8080/post/";
   private http : Http;
   constructor(http: Http) {
     console.log('Hello PostProvider Provider');
     this.http = http;
 
+  }
+
+  /**
+   * recebe o id do post e o id da reacao que o post recebeu (vou ter que pegar o id do usuario tbm)
+   * @param {number} idPost
+   * @param {number} idReacao
+   */
+  getReacaoPost(idPost : number, idReacao: number){
+    let usuarioLogado = new UsuarioModel();
+     usuarioLogado =  JSON.parse(sessionStorage.getItem('logado'));
+    console.log(usuarioLogado.idUser);
+
+    return this.http.post(this.URL_BACKEND+ 'salvaReacao',{idPost : idPost, idReacao: idReacao, usuario: {idUser : usuarioLogado.idUser}});
   }
 
   getPostPorHashTag(busca :string) {
