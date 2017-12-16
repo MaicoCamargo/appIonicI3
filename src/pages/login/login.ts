@@ -29,12 +29,13 @@ export class LoginPage implements OnInit{
   }
 
   pageAllPost(){
+
     this.nav.push(AllPostsPage);
   }
 
 
   /**
-   * encaminha para a pagina com o campo para buscar um post
+   * encaminha para a pagina com o campo para buscar um post_
    */
   pageVerMeuPost(){
     this.nav.push(MeusPostPage);
@@ -45,7 +46,7 @@ export class LoginPage implements OnInit{
   }
 
   /**
-   * navega para a pagina que tera sera realizado o post
+   * navega para a pagina que tera sera realizado o post_
    */
   public novoPost(){
     this.nav.push(NewPostPage);

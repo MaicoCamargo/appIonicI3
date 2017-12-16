@@ -13,35 +13,35 @@
 <p>Wisters mais próximos</p>
 
 <ion-grid>
-  <ion-row col-12>
+  <ion-row col-12 *ngFor="let post of todosPosts" >
       <ion-item>
-        <h2>### </h2>
-        <p>Local </p>
+        <h2>HashTag: {{ post.hashtag }} </h2>
+        <p>Local: <strong>Santa Maria</strong> </p>
       </ion-item>
       <ion-card-content>
-        <p> post </p>
+        <p>Whisper: {{ post.post_ }} </p>
       </ion-card-content>
-      <ion-item>
-        <ion-avatar item-start>
-          <img src="img/marty-avatar.png">
-        </ion-avatar>
+      <ion-item *ngIf="post.imagem != null" >
+        <ion-card item-start>
+          <img src="{{ post.imagem }}" />
+        </ion-card>
       </ion-item>
       <ion-row>
         <ion-col>
           <button ion-button icon-left clear small>
             <ion-icon name="thumbs-up"></ion-icon>
-            <div>Reações </div>
+            <div>Reagir</div>
           </button>
         </ion-col>
         <ion-col>
           <button ion-button icon-left clear small>
             <ion-icon name="text"></ion-icon>
-            <div>4 Comments</div>
+            <div>Commentar</div>
           </button>
         </ion-col>
         <ion-col center text-center>
           <ion-note>
-            11h ago
+            Denunciar
           </ion-note>
         </ion-col>
       </ion-row>

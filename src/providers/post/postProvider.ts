@@ -12,7 +12,7 @@ import {Http} from "@angular/http";
 @Injectable()
 export class PostProvider {
 
-  private  readonly URL_BACKEND = "http://localhost:8080/post/";
+  private  readonly URL_BACKEND = "http://localhost:8080/post_/";
   private http : Http;
   constructor(http: Http) {
     console.log('Hello PostProvider Provider');
@@ -31,5 +31,12 @@ export class PostProvider {
 
   getPostPorIdentificador(identificador: string) {
     return  this.http.get(this.URL_BACKEND + 'identificadorDoPost/'+ identificador);
+  }
+
+  /**
+   * buscara todos os posts
+   */
+  allPosts() {
+    return this.http.get(this.URL_BACKEND + 'allPosts');
   }
 }

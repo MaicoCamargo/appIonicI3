@@ -17,7 +17,7 @@ import {PostProvider} from "../../providers/post/postProvider";
 })
 export class NewPostPage {
 
-  novoPost = new PostModel();//obj do novo post
+  novoPost = new PostModel();//obj do novo post_
   constructor(public navCtrl: NavController, public navParams: NavParams, private _servicePost : PostProvider) {
   }
 
