@@ -12,7 +12,7 @@ import {Http} from "@angular/http";
 @Injectable()
 export class PostProvider {
 
-  private  readonly URL_BACKEND = "http://localhost:8080/post_/";
+  private  readonly URL_BACKEND = "http://localhost:8080/post/";
   private http : Http;
   constructor(http: Http) {
     console.log('Hello PostProvider Provider');

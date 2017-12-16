@@ -28,8 +28,15 @@ export class LoginPage implements OnInit{
                private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
   }
 
-  pageAllPost(){
+  limparPesquisa(){
+    this.posts = null;
+  }
 
+
+  /**
+   * redireciona para a pagina com todos os posts
+   */
+  pageAllPost(){
     this.nav.push(AllPostsPage);
   }
 
@@ -42,7 +49,7 @@ export class LoginPage implements OnInit{
   }
 
   pesquisarHashTag(termoPesquisa){
-    this._postService.getPostPorHashTag(termoPesquisa).subscribe(retorno => { this.posts = retorno.json()});
+    this._postService.getPostPorHashTag(termoPesquisa).subscribe(retorno => {this.posts = retorno.json()});
   }
 
   /**
