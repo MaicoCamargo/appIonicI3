@@ -30,8 +30,6 @@ export class PostProvider {
   getReacaoPost(idPost : number, idReacao: number){
     let usuarioLogado = new UsuarioModel();
      usuarioLogado =  JSON.parse(sessionStorage.getItem('logado'));
-    console.log(usuarioLogado.idUser);
-
     return this.http.post(this.URL_BACKEND+ 'salvaReacao',{idPost : idPost, idReacao: idReacao, usuario: {idUser : usuarioLogado.idUser}});
   }
 
