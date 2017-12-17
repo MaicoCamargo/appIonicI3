@@ -15,8 +15,8 @@ import {MeusPostPage} from "../pages/meus-post/meus-post";
 import {NewPostPage} from "../pages/new-post/new-post";
 import {AllPostsPage} from "../pages/all-posts/all-posts";
 import {HomePage} from "../pages/home/home";
-import {LoginPage} from "../pages/login/login";
 import {RegistrarSerPage} from "../pages/registrar-ser/registrar-ser";
+
 
 
 @NgModule({
@@ -45,7 +45,8 @@ import {RegistrarSerPage} from "../pages/registrar-ser/registrar-ser";
     NewPostPage,
     AllPostsPage,
     HomePage,
-    RegistrarSerPage
+    RegistrarSerPage,
+
 
 
   ],

@@ -21,8 +21,13 @@ export class PostProvider {
     this.http = http;
 
   }
+
+  buscarComentariosEreacoesDeUmPost(idPost : number){
+    return this.http.get(this.URL_BACKEND +'comentariosEreacoes/'+idPost);
+  }
+
   /**
-   * pega o comentario em um post
+   * pega o comentario em um post para fazer o insert no banco
    * @param idPost
    * @param {any | undefined} data
    */
@@ -67,4 +72,7 @@ export class PostProvider {
   }
 
 
+  postsUsuarioLogado(usuarioSesssion: UsuarioModel) {
+    return this.http.post(this.URL_BACKEND + 'postsUsuario/', usuarioSesssion);
+  }
 }

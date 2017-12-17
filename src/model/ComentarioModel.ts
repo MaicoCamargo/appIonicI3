@@ -1,5 +1,6 @@
 import {PostModel} from "./PostModel";
 import {UsuarioModel} from "./UsuarioModel";
+import {ReacaoModel} from "./Reacao";
 
 export class ComentarioModel {
   idComentario : number;
@@ -9,14 +10,18 @@ export class ComentarioModel {
   reacao : number;
   rating :  number;
   usuario : UsuarioModel;
-  constructor(idComentario : number, post: PostModel, comentario: string,imagemComentario: string, reacao: number,
-                rating: number, usuario : UsuarioModel) {
-    this.idComentario  = idComentario ;
-    this.post = new PostModel();
-    this.imagemComentario = imagemComentario;
+  reacaoo : ReacaoModel;
+
+
+  constructor(idComentario?: number, post?: PostModel, comentario?: string, imagemComentario?: string, reacao?: number,
+              rating?: number, usuario?: UsuarioModel, reacaoo?: ReacaoModel) {
+    this.idComentario = idComentario;
+    this.post = post;
     this.comentario = comentario;
+    this.imagemComentario = imagemComentario;
     this.reacao = reacao;
     this.rating = rating;
-    this.usuario = new UsuarioModel();
+    this.usuario = usuario;
+    this.reacaoo = reacaoo;
   }
 }
