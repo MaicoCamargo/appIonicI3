@@ -7,12 +7,35 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>registrar-ser</ion-title>
+    <ion-title>registrar-se no App</ion-title>
   </ion-navbar>
 
 </ion-header>
-
-
 <ion-content padding>
+  <form>
+      <p>para ter acesso ao app informe os dados solicitados a baixo</p>
+    <ion-item>
+      <ion-label color="dark" floating>Nickname</ion-label>
+      <ion-input type="text" [(ngModel)]="novoUsuario.nickName" name="nickname" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="dark"  floating>Email</ion-label>
+      <ion-input type="email" [(ngModel)]="novoUsuario.email" name="email"></ion-input>
+    </ion-item>
 
+    <ion-item>
+      <ion-label color="dark"  floating>Celular</ion-label>
+      <ion-input type="tel" [(ngModel)]="novoUsuario.celular" name="celular"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="dark"  floating>Senha</ion-label>
+      <ion-input type="password" [(ngModel)]="novoUsuario.senha" name="senha" minlength="4"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="dark" floating minlength="4" >Confirmar Senha</ion-label>
+      <ion-input type="password" [(ngModel)]="novoUsuario.confirmarsenha" name="confirmarsenha"></ion-input>
+    </ion-item>
+    <button ion-button color="secondary" (click)="cadastroDeNovoUsuario()">Registrar</button>
+    <button ion-button color="default" float-right (click)="pageLogin()">Cancelar</button>
+  </form>
 </ion-content>

@@ -12,7 +12,7 @@
     <p>Informe seus dados para acessar nosso App!</p>
   </ion-badge>
   <ion-item>
-    <ion-label color="dark" floating>Usuario</ion-label>
+    <ion-label color="dark" floating>Nickname</ion-label>
     <ion-input type="text" #usuario [(ngModel)]="logando.nickName" name="nickName"></ion-input>
   </ion-item>
   <ion-item>
@@ -21,7 +21,7 @@
   </ion-item>
   <br>
   <button ion-button color="secondary" (click)="validarLogin(usuario.value)">Logar</button>
-  <button ion-button color="light" float-right="">Registrar-se</button>
+  <button ion-button color="light" float-right (click)="pageResgistrar()">Registrar-se</button>
 </form>
   <br>
   <hr>

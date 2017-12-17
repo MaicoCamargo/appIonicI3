@@ -32,4 +32,8 @@ export class UsuarioProvider {
   logar(crendiciais: UsuarioModel) {
     return this.http.post(this.URL_BACKEND + 'login', crendiciais);
   }
+
+  registrarUsuario(novoUsuario: UsuarioModel) {
+    return this.http.post(this.URL_BACKEND+'registrarUsuario',novoUsuario);
+  }
 }

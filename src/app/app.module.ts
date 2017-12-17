@@ -16,6 +16,7 @@ import {NewPostPage} from "../pages/new-post/new-post";
 import {AllPostsPage} from "../pages/all-posts/all-posts";
 import {HomePage} from "../pages/home/home";
 import {LoginPage} from "../pages/login/login";
+import {RegistrarSerPage} from "../pages/registrar-ser/registrar-ser";
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import {LoginPage} from "../pages/login/login";
     NewPostPage,
     AllPostsPage,
     HomePage,
+    RegistrarSerPage
 
   ],
   imports: [
@@ -43,6 +45,7 @@ import {LoginPage} from "../pages/login/login";
     NewPostPage,
     AllPostsPage,
     HomePage,
+    RegistrarSerPage
 
 
   ],

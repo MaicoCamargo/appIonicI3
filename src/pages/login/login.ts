@@ -3,6 +3,7 @@ import {NavController, AlertController, LoadingController, Loading, IonicPage, M
 import {HomePage} from "../home/home";
 import {UsuarioModel} from "../../model/UsuarioModel";
 import {UsuarioProvider} from "../../providers/usuario/usuario";
+import {RegistrarSerPage} from "../registrar-ser/registrar-ser";
 
 
 @IonicPage()
@@ -18,6 +19,10 @@ export class LoginPage implements OnInit{
   constructor(public menu: MenuController,private nav: NavController,
               private alertCtrl: AlertController, private loadingCtrl: LoadingController,
               private _usuarioService : UsuarioProvider ) {
+  }
+
+  pageResgistrar(){
+    this.nav.push(RegistrarSerPage);
   }
 
   validarLogin(nickNameForm){
