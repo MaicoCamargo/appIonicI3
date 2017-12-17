@@ -4,6 +4,7 @@ import {PostModel} from "../../model/PostModel";
 import {PostProvider} from "../../providers/post/postProvider";
 import {UsuarioModel} from "../../model/UsuarioModel";
 import {MeusPostPage} from "../meus-post/meus-post";
+import {Camera, CameraOptions} from "@ionic-native/camera";
 
 /**
  * Generated class for the NewPostPage page.
@@ -21,7 +22,42 @@ export class NewPostPage implements OnInit{
   usuarioSession = new UsuarioModel();
   novoPost = new PostModel();//obj do novo post_
   constructor(public navCtrl: NavController, public navParams: NavParams, private _servicePost : PostProvider,
-              private alertCtrl: AlertController) {}
+              private alertCtrl: AlertController,private camera: Camera) {}
+
+  takePhoto() {
+    const options : CameraOptions = {
+      quality: 60, // picture quality
+      correctOrientation: true,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+    };
+    this.camera.getPicture(options).then((imageData) => {
+      this.novoPost.imagem = "data:image/jpeg;base64," + imageData;
+      console.log("String da imagem"+ this.novoPost.imagem);
+    }, (err) => {
+      console.log(err);
+    });
+
+  }
+
+  openGallery() {
+
+    const options : CameraOptions = {
+      quality: 60, // picture quality
+      correctOrientation: true,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+    }
+    this.camera.getPicture(options).then((imageData) => {
+      this.novoPost.imagem = "data:image/jpeg;base64," + imageData;
+
+    }, (err) => {
+      console.log(err);
+    });
+  }
 
   cadastraNovoPost(){
     this.novoPost.usuario = this.usuarioSession;//pega o usuario logado

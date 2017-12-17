@@ -22,7 +22,22 @@
     </ion-item>
     <ion-item>
       <ion-label color="primary" floating>Foto</ion-label>
-      <ion-input [(ngModel)]="novoPost.imagem" name="imagem" type="text"></ion-input>
+      <ion-row no-padding>
+        <ion-col>
+          <button ion-button clear small color="primary" icon-left (click)="takePhoto()">
+            <ion-icon name='camera'></ion-icon>
+            Câmera
+          </button>
+        </ion-col>
+        <ion-col text-center>
+          <button ion-button clear small color="primary" icon-left (click)="openGallery()">
+            <ion-icon name='albums'></ion-icon>
+            Galeria
+          </button>
+        </ion-col>
+      </ion-row>
+
+      <!--<ion-input [(ngModel)]="novoPost.imagem" name="imagem" type="text"></ion-input>-->
     </ion-item>
     <ion-item>
       <ion-label color="primary" floating>Hashtag</ion-label>
@@ -31,7 +46,7 @@
 
     <ion-row>
       <ion-col col-8>
-        <button ion-button block  type="submit">Postar :D</button>
+        <button ion-button block  type="submit">Postar</button>
       </ion-col>
       <ion-col col-4="">
         <button ion-button block disabled>Cancelar</button>
