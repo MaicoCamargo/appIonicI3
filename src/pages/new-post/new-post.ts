@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component, OnInit} from '@angular/core';
+import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {PostModel} from "../../model/PostModel";
 import {PostProvider} from "../../providers/post/postProvider";
+import {UsuarioModel} from "../../model/UsuarioModel";
+import {MeusPostPage} from "../meus-post/meus-post";
 
 /**
  * Generated class for the NewPostPage page.
@@ -15,28 +17,43 @@ import {PostProvider} from "../../providers/post/postProvider";
   selector: 'page-new-post',
   templateUrl: 'new-post.html',
 })
-export class NewPostPage {
-
+export class NewPostPage implements OnInit{
+  usuarioSession = new UsuarioModel();
   novoPost = new PostModel();//obj do novo post_
-  constructor(public navCtrl: NavController, public navParams: NavParams, private _servicePost : PostProvider) {
-  }
-
-
+  constructor(public navCtrl: NavController, public navParams: NavParams, private _servicePost : PostProvider,
+              private alertCtrl: AlertController) {}
 
   cadastraNovoPost(){
+    this.novoPost.usuario = this.usuarioSession;//pega o usuario logado
     console.log(this.novoPost);
     this._servicePost.realizarNovoPost(this.novoPost).subscribe(retorno => {
       if (retorno.ok){
-        console.log("postado");
+        let alert = this.alertCtrl.create({
+          title: 'Ok...!',
+          subTitle: 'Post realizado',
+          buttons: ['OK']
+        });
+        alert.present();
+        this.navCtrl.push(MeusPostPage);
       }else {
-        console.log('erro');
+        let alert = this.alertCtrl.create({
+          title: 'Ops...!',
+          subTitle: 'Post não realizado, tente novamente',
+          buttons: ['OK']
+        });
+        alert.present();
       }
 
     })
 
   }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad NewPostPage');
+  }
+
+  ngOnInit(): void {
+    this.usuarioSession = JSON.parse(sessionStorage.getItem('logado'));
   }
 
 }
