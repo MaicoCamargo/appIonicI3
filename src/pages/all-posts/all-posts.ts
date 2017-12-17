@@ -27,6 +27,24 @@ export class AllPostsPage implements OnInit{
               private _postService : PostProvider, private alertCtrl : AlertController,
               private _usuarioService : UsuarioProvider) {}
 
+  modalComentar(idPost){
+
+    let prompt = this.alertCtrl.create({
+      title: 'Comentar',
+      message: "Digite o seu comentário",
+      inputs: [{
+          name:'comentario',
+          placeholder: 'comentario...'
+        },],
+      buttons: [
+        { text: 'Cancelar' }, {  text: 'Salvar', handler: data => {  this._postService.getComentario(idPost ,data).subscribe(
+            retorno => {console.log(retorno.json())}
+          ) } }
+      ]
+    });
+    prompt.present();
+  }
+
   loginUser(usuario,senha){
     this.logando.nickName =  usuario;
     this.logando.senha = senha;
@@ -45,6 +63,7 @@ export class AllPostsPage implements OnInit{
   }
 
   modalReagir(idPost) {
+
     let alert = this.alertCtrl.create();
 
       alert.setTitle('Reagir com... ');

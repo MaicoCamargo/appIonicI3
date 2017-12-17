@@ -13,14 +13,27 @@ import {UsuarioModel} from "../../model/UsuarioModel";
 @Injectable()
 export class PostProvider {
 
-  //private  readonly URL_BACKEND = "http://localhost:8080/post/";
-  private  readonly URL_BACKEND = "http://192.168.2.18:8080/post/";
+  private  readonly URL_BACKEND = "http://localhost:8080/post/";
+  //private  readonly URL_BACKEND = "http://192.168.2.18:8080/post/";
   private http : Http;
   constructor(http: Http) {
     console.log('Hello PostProvider Provider');
     this.http = http;
 
   }
+  /**
+   * pega o comentario em um post
+   * @param idPost
+   * @param {any | undefined} data
+   */
+  getComentario(idPost: number, comentario: string) {
+    let usuarioLogado = new UsuarioModel();
+    usuarioLogado =  JSON.parse(sessionStorage.getItem('logado'));
+    console.log(comentario);
+    return this.http.post(this.URL_BACKEND + 'comentario',
+      {post: {idPost: idPost},usuario:{idUser: usuarioLogado.idUser }});
+  }
+
 
   /**
    * recebe o id do post e o id da reacao que o post recebeu (vou ter que pegar o id do usuario tbm)
@@ -52,4 +65,6 @@ export class PostProvider {
   allPosts() {
     return this.http.get(this.URL_BACKEND + 'allPosts');
   }
+
+
 }

@@ -21,13 +21,12 @@ export class UsuarioProvider {
     this.headers.append('Content-Type', 'application/json');
   }*/
 
- // private  readonly URL_BACKEND = "http://localhost:8080/usuario/";
-  private  readonly URL_BACKEND = "http://192.168.2.18:8080/usuario/";
+  private  readonly URL_BACKEND = "http://localhost:8080/usuario/";
+  //private  readonly URL_BACKEND = "http://192.168.2.18:8080/usuario/";
   private http : Http;
   constructor(http: Http) {
     console.log('Hello PostProvider Provider');
     this.http = http;
-
   }
 
   logar(crendiciais: UsuarioModel) {
