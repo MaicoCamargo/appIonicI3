@@ -45,23 +45,6 @@ export class AllPostsPage implements OnInit{
     prompt.present();
   }
 
-  loginUser(usuario,senha){
-    this.logando.nickName =  usuario;
-    this.logando.senha = senha;
-    this._usuarioService.logar(this.logando).subscribe( retorno=> {
-      this.logando = retorno.json();
-      if (this.logando.nickName == usuario){
-        sessionStorage.setItem('logado',JSON.stringify(this.logando));
-      }else {
-        let alert = this.alertCtrl.create();
-        alert.setTitle('Login invalido tente novamente ! ');
-
-        alert.addButton({ text: 'Ok'});
-        alert.present();
-      }
-    });
-  }
-
   modalReagir(idPost) {
 
     let alert = this.alertCtrl.create();

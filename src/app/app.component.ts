@@ -19,7 +19,6 @@ export class Whisper {
   constructor(public storage: Storage, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
-    storage.set('usuarioLogado', 'null');
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Novo Post', component: NewPostPage },

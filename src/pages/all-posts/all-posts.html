@@ -11,36 +11,6 @@
 </ion-header>
 <ion-content padding>
 
-  <ion-card *ngIf="usuarioSession == null">
-    <p text-center="">Logar...</p>
-    <img src="img/advance-card-map-madison.png"><!--da pra por uma foto aqui -->
-    <ion-fab right top>
-      <button ion-fab>
-        <ion-icon name="md-person"></ion-icon>
-      </button>
-    </ion-fab>
-
-    <form #formLogar="ngForm">
-      <ion-item>
-        <ion-icon name="logo-freebsd-devil" item-start large></ion-icon>
-        <ion-label color="primary" floating>@usuario </ion-label>
-        <ion-input  type="text" #nickname name="nickname"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-icon name="ios-key" item-left large ></ion-icon>
-        <ion-label color="primary" floating>Senha</ion-label>
-        <ion-input  type="text" #senha ></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <span item-end>
-          <button (click)="loginUser(nickname.value,senha.value)" ion-button icon-left clear item-end><ion-icon name="ios-log-in"></ion-icon>Logar</button>
-        </span>
-      </ion-item>
-    </form>
-  </ion-card>
-
 <p>Wisters mais próximos</p>
 
 <ion-grid>

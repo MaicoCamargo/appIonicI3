@@ -14,6 +14,8 @@ import {UsuarioProvider} from "../providers/usuario/usuario";
 import {MeusPostPage} from "../pages/meus-post/meus-post";
 import {NewPostPage} from "../pages/new-post/new-post";
 import {AllPostsPage} from "../pages/all-posts/all-posts";
+import {HomePage} from "../pages/home/home";
+import {LoginPage} from "../pages/login/login";
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import {AllPostsPage} from "../pages/all-posts/all-posts";
     Whisper,
     MeusPostPage,
     NewPostPage,
-    AllPostsPage
+    AllPostsPage,
+    HomePage,
 
   ],
   imports: [
@@ -38,7 +41,9 @@ import {AllPostsPage} from "../pages/all-posts/all-posts";
     Whisper,
     MeusPostPage,
     NewPostPage,
-    AllPostsPage
+    AllPostsPage,
+    HomePage,
+
 
   ],
   providers: [

@@ -1,12 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {NavController, AlertController, LoadingController, Loading, IonicPage, MenuController} from 'ionic-angular';
+import {HomePage} from "../home/home";
+import {UsuarioModel} from "../../model/UsuarioModel";
+import {UsuarioProvider} from "../../providers/usuario/usuario";
 
-import { Storage } from '@ionic/storage';
-import {PostModel} from "../../model/PostModel";
-import {PostProvider} from "../../providers/post/postProvider";
-import {NewPostPage} from "../new-post/new-post";
-import {MeusPostPage} from "../meus-post/meus-post";
-import {AllPostsPage} from "../all-posts/all-posts";
 
 @IonicPage()
 @Component({
@@ -14,48 +11,30 @@ import {AllPostsPage} from "../all-posts/all-posts";
   templateUrl: 'login.html',
 })
 export class LoginPage implements OnInit{
-  ngOnInit(): void {
+
+
+  logando = new UsuarioModel();
+
+  constructor(public menu: MenuController,private nav: NavController,
+              private alertCtrl: AlertController, private loadingCtrl: LoadingController,
+              private _usuarioService : UsuarioProvider ) {
   }
 
-  loading: Loading;
-  posts : PostModel[];
+  validarLogin(nickNameForm){
+    this._usuarioService.logar(this.logando).subscribe( retorno=> {
+      this.logando = retorno.json();
+      if (this.logando.nickName == nickNameForm){
+        sessionStorage.setItem('logado',JSON.stringify(this.logando));
+        this.nav.setRoot(HomePage);
+      }else {
+        let alert = this.alertCtrl.create();
+        alert.setTitle('Login invalido tente novamente ! ');
 
-  constructor(public storage: Storage,public menu: MenuController,
-              private _postService : PostProvider, private nav: NavController,
-              private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
+        alert.addButton({ text: 'Ok'});
+        alert.present();
+      }
+    });
   }
-
-  limparPesquisa(){
-    this.posts = null;
-  }
-
-
-  /**
-   * redireciona para a pagina com todos os posts
-   */
-  pageAllPost(){
-    this.nav.push(AllPostsPage);
-  }
-
-
-  /**
-   * encaminha para a pagina com o campo para buscar um post_
-   */
-  pageVerMeuPost(){
-    this.nav.push(MeusPostPage);
-  }
-
-  pesquisarHashTag(termoPesquisa){
-    this._postService.getPostPorHashTag(termoPesquisa).subscribe(retorno => {this.posts = retorno.json()});
-  }
-
-  /**
-   * navega para a pagina que tera sera realizado o post_
-   */
-  public novoPost(){
-    this.nav.push(NewPostPage);
-  }
-
 
 
   ionViewDidEnter() {
@@ -72,26 +51,11 @@ export class LoginPage implements OnInit{
   }
 
 
-  showLoading() {
-    this.loading = this.loadingCtrl.create({
-      content: 'Espere um momento...',
-      dismissOnPageChange: true
-    });
-    this.loading.present();
-  }
-  showError(text) {
-    this.loading.dismiss();
-
-    let alert = this.alertCtrl.create({
-      title: 'Ops!',
-      subTitle: text,
-      buttons: ['OK']
-    });
-    alert.present(prompt);
-  }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+  }
+
+  ngOnInit(): void {
   }
 
 }

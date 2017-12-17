@@ -7,74 +7,36 @@
 </ion-header>-->
 
 <ion-content padding>
+<form>
+  <ion-badge color="light">
+    <p>Informe seus dados para acessar nosso App!</p>
+  </ion-badge>
+  <ion-item>
+    <ion-label color="dark" floating>Usuario</ion-label>
+    <ion-input type="text" #usuario [(ngModel)]="logando.nickName" name="nickName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="dark" floating>Senha</ion-label>
+    <ion-input type="password" name="senha" [(ngModel)]="logando.senha" ></ion-input>
+  </ion-item>
+  <br>
+  <button ion-button color="secondary" (click)="validarLogin(usuario.value)">Logar</button>
+  <button ion-button color="light" float-right="">Registrar-se</button>
+</form>
+  <br>
+  <hr>
   <ion-grid>
-    <p><ion-icon name="md-at"></ion-icon> --- >  veja o que ta rolando sobre qualquer assunto do seu interesse</p>
-    <br>
     <ion-row>
-      <ion-col>
-          <button ion-button block (click)="novoPost()">Postar</button>
-          <button ion-button block (click)="pageVerMeuPost()" >Ver meu Post</button>
-          <button ion-button block (click)="pageAllPost()" >Posts da Galera</button>
-      </ion-col>
+
+          <ion-card color="light">
+            <ion-card-content>
+              <!-- Add card content here! -->
+              Aqui você posta suas ideias e ve os usuário interagindo a elas,
+              mas só você sabe o que estão interagindo com seus posts, Bem vindo ao Whisper!
+            </ion-card-content>
+          </ion-card>
     </ion-row>
   </ion-grid>
-  <p text-center="">-------------------</p>
-  <strong>aqui você pode pesquisar por uma determinada # </strong>
-  <form #pesquisar="ngForm">
-    <ion-item>
-      <ion-label color="primary" floating># pesquisar por</ion-label>
-      <ion-input #pesquisa type="text"></ion-input>
-    </ion-item>
-    <button ion-button block (click)="pesquisarHashTag(pesquisa.value)">Pesquisar por HashTag</button>
-  </form>
-
-  <div *ngIf="posts != null">
-
-    <div *ngIf="posts.length == 0">
-      <p>nada encontrado ! pesquise por outra # </p>
-    </div>
-
-    <ion-grid *ngIf="posts.length != 0">
-      <p>Encontramos esses resultados para a pesquisa</p>
-      <ion-row col-12 *ngFor="let post of posts" >
-        <ion-item>
-          <h2>HashTag: {{ post.hashtag }} </h2>
-          <p>Local: <strong>Santa Maria</strong> </p>
-        </ion-item>
-        <ion-card-content>
-          <p>Whisper: {{ post.post_ }} </p>
-        </ion-card-content>
-        <ion-item *ngIf="post.imagem != null" >
-          <ion-card item-start>
-            <img src="{{ post.imagem }}" />
-          </ion-card>
-        </ion-item>
-        <ion-row>
-          <ion-col>
-            <button ion-button icon-left clear small>
-              <ion-icon name="thumbs-up"></ion-icon>
-              <div>Reagir</div>
-            </button>
-          </ion-col>
-          <ion-col>
-            <button ion-button icon-left clear small>
-              <ion-icon name="text"></ion-icon>
-              <div>Commentar</div>
-            </button>
-          </ion-col>
-          <ion-col center text-center>
-            <ion-note>
-              Denunciar - rating
-            </ion-note>
-          </ion-col>
-        </ion-row>
-      </ion-row>
-      <button ion-button full (click)="limparPesquisa()" >Pesquisa Novamente</button>
-    </ion-grid>
-
-
-
-  </div>
 
 
 </ion-content>
