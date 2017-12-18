@@ -13,8 +13,8 @@ import {UsuarioModel} from "../../model/UsuarioModel";
 @Injectable()
 export class PostProvider {
 
-  //private  readonly URL_BACKEND = "http://192.168.25.9:8080/post/";
-  private  readonly URL_BACKEND = "http://localhost:8080/post/";
+  private  readonly URL_BACKEND = "http://192.168.90.66:8080/post/";
+  //private  readonly URL_BACKEND = "http://localhost:8080/post/";
   private http : Http;
   constructor(http: Http) {
     console.log('Hello PostProvider Provider');
@@ -31,10 +31,10 @@ export class PostProvider {
    * @param idPost
    * @param {any | undefined} data
    */
-  getComentario(idPost: number, comentario: string) {
+  getComentario(idPost: number, coment: string) {
     let usuarioLogado = new UsuarioModel();
     usuarioLogado =  JSON.parse(sessionStorage.getItem('logado'));
-    console.log(comentario);
+    console.log(coment.toString());
     return this.http.post(this.URL_BACKEND + 'comentario',
       {post: {idPost: idPost},usuario:{idUser: usuarioLogado.idUser }});
   }

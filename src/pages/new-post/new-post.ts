@@ -42,7 +42,6 @@ export class NewPostPage implements OnInit{
   }
 
   openGallery() {
-
     const options : CameraOptions = {
       quality: 60, // picture quality
       correctOrientation: true,
@@ -50,14 +49,14 @@ export class NewPostPage implements OnInit{
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-    }
+    };
     this.camera.getPicture(options).then((imageData) => {
       this.novoPost.imagem = "data:image/jpeg;base64," + imageData;
 
     }, (err) => {
       console.log(err);
     });
-  }
+  };
 
   cadastraNovoPost(){
     this.novoPost.usuario = this.usuarioSession;//pega o usuario logado

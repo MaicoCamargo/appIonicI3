@@ -22,6 +22,7 @@ export class AllPostsPage implements OnInit{
   todosPosts : PostModel;
   logando : UsuarioModel = new UsuarioModel();
   usuarioSession : UsuarioModel = new UsuarioModel();
+  comentario : string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private _postService : PostProvider, private alertCtrl : AlertController,
@@ -33,11 +34,12 @@ export class AllPostsPage implements OnInit{
       title: 'Comentar',
       message: "Digite o seu comentário",
       inputs: [{
-          name:'comentario',
-          placeholder: 'comentario...'
+          placeholder: 'comentario...',
+          id: 'teste'
         },],
       buttons: [
-        { text: 'Cancelar' }, {  text: 'Salvar', handler: data => {  this._postService.getComentario(idPost ,data).subscribe(
+        { text: 'Cancelar' }, {  text: 'Salvar', handler: data => {
+          this._postService.getComentario(idPost ,data.valueOf()).subscribe(
             retorno => {console.log(retorno.json())}
           ) } }
       ]
