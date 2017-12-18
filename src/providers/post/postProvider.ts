@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import {PostModel} from "../../model/PostModel";
 import {Http} from "@angular/http";
 import {UsuarioModel} from "../../model/UsuarioModel";
+import {ComentarioModel} from "../../model/ComentarioModel";
 
 /*
   Generated class for the PostProvider provider.
@@ -31,12 +32,14 @@ export class PostProvider {
    * @param idPost
    * @param {any | undefined} data
    */
-  getComentario(idPost: number, coment: string) {
+  getComentario(comentario : ComentarioModel) {
     let usuarioLogado = new UsuarioModel();
     usuarioLogado =  JSON.parse(sessionStorage.getItem('logado'));
-    console.log(coment.toString());
-    return this.http.post(this.URL_BACKEND + 'comentario',
-      {post: {idPost: idPost},usuario:{idUser: usuarioLogado.idUser }});
+    comentario.usuario = usuarioLogado;
+    console.log(comentario);
+    console.log('service');
+
+    return this.http.post(this.URL_BACKEND + 'comentario',comentario);
   }
 
 

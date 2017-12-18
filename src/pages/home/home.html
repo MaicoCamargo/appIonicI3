@@ -65,10 +65,11 @@
               <div (click)="modalReagir(post.idPost)">Reagir</div>
             </button>
           </ion-col>
+
           <ion-col>
             <button ion-button icon-left clear small>
               <ion-icon name="text"></ion-icon>
-              <div (click)="modalComentar(post.idPost)">Commentar</div>
+              <div (click)="modalComentar()">Comentar</div>
             </button>
           </ion-col>
           <ion-col center text-center>
@@ -77,6 +78,20 @@
             </ion-note>
           </ion-col>
         </ion-row>
+        <ion-row col-12 *ngIf="cardComentar">
+          <ion-col col-12>
+            <ion-card col-12 >
+              <ion-item>
+                <ion-label color="primary" floating>Comentário:</ion-label>
+                <ion-input [(ngModel)]="comentarioPost.comentario" name="comentario"  type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <button ion-button color="secondary" (click)="comentarPost(post.idPost)" >Comentar</button>
+              </ion-item>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+
       </ion-row>
       <button ion-button full (click)="limparPesquisa()" >Pesquisa Novamente</button>
     </ion-grid>

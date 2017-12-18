@@ -4,6 +4,7 @@ import {PostProvider} from "../../providers/post/postProvider";
 import {PostModel} from "../../model/PostModel";
 import {UsuarioProvider} from "../../providers/usuario/usuario";
 import {UsuarioModel} from "../../model/UsuarioModel";
+import {ComentarioModel} from "../../model/ComentarioModel";
 
 /**
  * Generated class for the AllPostsPage page.
@@ -23,28 +24,41 @@ export class AllPostsPage implements OnInit{
   logando : UsuarioModel = new UsuarioModel();
   usuarioSession : UsuarioModel = new UsuarioModel();
   comentario : string;
+  cardComentar : boolean = false;
+  comentarioPost =new ComentarioModel();
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private _postService : PostProvider, private alertCtrl : AlertController,
               private _usuarioService : UsuarioProvider) {}
 
-  modalComentar(idPost){
+  comentarPost(idPost){
+    this.cardComentar= !this.cardComentar;
+    this.comentarioPost.post.idPost = idPost;
+    this._postService.getComentario(this.comentarioPost).subscribe(retorno => {
 
-    let prompt = this.alertCtrl.create({
-      title: 'Comentar',
-      message: "Digite o seu comentário",
-      inputs: [{
-          placeholder: 'comentario...',
-          id: 'teste'
-        },],
-      buttons: [
-        { text: 'Cancelar' }, {  text: 'Salvar', handler: data => {
-          this._postService.getComentario(idPost ,data.valueOf()).subscribe(
-            retorno => {console.log(retorno.json())}
-          ) } }
-      ]
+      if (retorno.ok){
+        let alert = this.alertCtrl.create();
+        alert.setTitle('Comentário adicionado ao post');
+        alert.addButton('Ok');
+        alert.present();
+      }else{
+        let alert = this.alertCtrl.create();
+        alert.setTitle('Comentário não adicionado ao post, tente novamente');
+        alert.addButton('Ok');
+        alert.present();
+      }
+
     });
-    prompt.present();
+  }
+
+
+
+  /**
+   * mostra o card com o input do comentario
+   */
+  modalComentar(){
+    this.cardComentar= !this.cardComentar;
   }
 
   modalReagir(idPost) {

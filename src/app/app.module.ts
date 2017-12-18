@@ -26,7 +26,7 @@ import {RegistrarSerPage} from "../pages/registrar-ser/registrar-ser";
     NewPostPage,
     AllPostsPage,
     HomePage,
-    RegistrarSerPage
+    RegistrarSerPage,
 
   ],
   imports: [

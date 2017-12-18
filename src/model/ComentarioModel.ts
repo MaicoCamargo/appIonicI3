@@ -16,12 +16,12 @@ export class ComentarioModel {
   constructor(idComentario?: number, post?: PostModel, comentario?: string, imagemComentario?: string, reacao?: number,
               rating?: number, usuario?: UsuarioModel, reacaoo?: ReacaoModel) {
     this.idComentario = idComentario;
-    this.post = post;
+    this.post = new PostModel();
     this.comentario = comentario;
     this.imagemComentario = imagemComentario;
     this.reacao = reacao;
     this.rating = rating;
-    this.usuario = usuario;
+    this.usuario = new UsuarioModel();
     this.reacaoo = reacaoo;
   }
 }

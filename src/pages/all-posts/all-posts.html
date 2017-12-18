@@ -42,8 +42,21 @@
         </ion-col>
         <ion-col center text-center>
           <ion-note>
-            Denunciar - rating
+            Denunciar
           </ion-note>
+        </ion-col>
+      </ion-row>
+      <ion-row col-12 *ngIf="cardComentar">
+        <ion-col col-12>
+          <ion-card col-12 >
+            <ion-item>
+              <ion-label color="primary" floating>Comentário:</ion-label>
+              <ion-input [(ngModel)]="comentarioPost.comentario" name="comentario"  type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <button ion-button color="secondary" (click)="comentarPost(post.idPost)" >Comentar</button>
+            </ion-item>
+          </ion-card>
         </ion-col>
       </ion-row>
   </ion-row>

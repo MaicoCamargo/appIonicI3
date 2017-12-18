@@ -6,6 +6,8 @@ import {AllPostsPage} from "../all-posts/all-posts";
 import {MeusPostPage} from "../meus-post/meus-post";
 import {NewPostPage} from "../new-post/new-post";
 import {LoginPage} from "../login/login";
+import {ComentarioModel} from "../../model/ComentarioModel";
+import {UsuarioModel} from "../../model/UsuarioModel";
 
 /**
  * Generated class for the HomePage page.
@@ -25,6 +27,8 @@ export class HomePage  implements OnInit{
 
   loading: Loading;
   posts : PostModel[];
+  cardComentar : boolean= false;
+  comentarioPost = new ComentarioModel();
 
   constructor(public menu: MenuController, private _postService : PostProvider,
               private nav: NavController,private alertCtrl: AlertController,
@@ -90,26 +94,43 @@ export class HomePage  implements OnInit{
 
   }
 
-  modalComentar(idPost){
+  /**
+   * pega o comentario que o usuario digitou
+   * @param idPost
+   */
+  comentarPost(idPost){
+    this.cardComentar= !this.cardComentar;
+    this.comentarioPost.post.idPost = idPost;
+    this._postService.getComentario(this.comentarioPost).subscribe(retorno => {
 
-    let prompt = this.alertCtrl.create({
-      title: 'Comentar',
-      message: "Digite o seu comentário",
-      inputs: [{
-        placeholder: 'comentario...',
-        id: 'teste'
-      },],
-      buttons: [
-        { text: 'Cancelar' }, {  text: 'Salvar', handler: data => {
-            this._postService.getComentario(idPost ,data.valueOf()).subscribe(
-              retorno => {console.log(retorno.json())}
-            ) } }
-      ]
+      if (retorno.ok){
+        let alert = this.alertCtrl.create();
+        alert.setTitle('Comentário adicionado ao post');
+        alert.addButton('Ok');
+        alert.present();
+      }else{
+        let alert = this.alertCtrl.create();
+        alert.setTitle('Comentário não adicionado ao post, tente novamente');
+        alert.addButton('Ok');
+        alert.present();
+      }
+
     });
-    prompt.present();
   }
 
 
+
+  /**
+   * mostra o card com o input do comentario
+   */
+  modalComentar(){
+    this.cardComentar= !this.cardComentar;
+  }
+
+
+  /**
+   * limpa as pesquisa mostradas
+   */
   limparPesquisa(){
     this.posts = null;
   }
