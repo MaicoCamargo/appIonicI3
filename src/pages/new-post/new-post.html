@@ -21,27 +21,15 @@
       <ion-input [(ngModel)]="novoPost.post_" name="post" type="text"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label color="primary" floating>Foto</ion-label>
-      <ion-row no-padding>
-        <ion-col>
-          <button ion-button clear small color="primary" icon-left (click)="takePhoto()">
-            <ion-icon name='camera'></ion-icon>
-            Câmera
-          </button>
-        </ion-col>
-        <ion-col text-center>
-          <button ion-button clear small color="primary" icon-left (click)="openGallery()">
-            <ion-icon name='albums'></ion-icon>
-            Galeria
-          </button>
-        </ion-col>
-      </ion-row>
-
-      <!--<ion-input [(ngModel)]="novoPost.imagem" name="imagem" type="text"></ion-input>-->
-    </ion-item>
-    <ion-item>
       <ion-label color="primary" floating>Hashtag</ion-label>
       <ion-input [(ngModel)]="novoPost.hashtag" name="hashtag" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+          <button ion-button clear small color="primary" icon-left (click)="takePhoto()">
+            <ion-icon name='camera'></ion-icon>  Câmera  </button>
+          <button ion-button clear small color="primary" icon-right (click)="openGallery()">
+            <ion-icon name='albums'></ion-icon> Galeria </button>
     </ion-item>
 
     <ion-row>

@@ -13,8 +13,8 @@ import {UsuarioModel} from "../../model/UsuarioModel";
 @Injectable()
 export class PostProvider {
 
+  //private  readonly URL_BACKEND = "http://192.168.25.9:8080/post/";
   private  readonly URL_BACKEND = "http://localhost:8080/post/";
-  //private  readonly URL_BACKEND = "http://192.168.2.18:8080/post/";
   private http : Http;
   constructor(http: Http) {
     console.log('Hello PostProvider Provider');
