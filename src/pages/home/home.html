@@ -6,6 +6,11 @@
 -->
 <ion-header>
   <ion-navbar>
+    <ion-buttons end>
+      <button ion-button (click)="pageEditarDados()">
+        <ion-icon name="md-contacts"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>Home page</ion-title>
       <ion-buttons end>
         <button ion-button (click)="logout()">
@@ -32,7 +37,7 @@
     <ion-item>
       <strong>Pesquise por uma determinada # </strong>
       <ion-label color="primary" floating># pesquisar por</ion-label>
-      <ion-input #pesquisa type="text" placeholder="pesquise por uma #" ></ion-input>
+      <ion-input #pesquisa type="text"></ion-input>
     </ion-item>
     <button ion-button block (click)="pesquisarHashTag(pesquisa.value)">Pesquisar por HashTag</button>
   </form>
@@ -71,11 +76,6 @@
               <ion-icon name="text"></ion-icon>
               <div (click)="modalComentar()">Comentar</div>
             </button>
-          </ion-col>
-          <ion-col center text-center>
-            <ion-note>
-              Denunciar
-            </ion-note>
           </ion-col>
         </ion-row>
         <ion-row col-12 *ngIf="cardComentar">

@@ -7,7 +7,7 @@ import {MeusPostPage} from "../meus-post/meus-post";
 import {NewPostPage} from "../new-post/new-post";
 import {LoginPage} from "../login/login";
 import {ComentarioModel} from "../../model/ComentarioModel";
-import {UsuarioModel} from "../../model/UsuarioModel";
+import {EditarPerfilPage} from "../editar-perfil/editar-perfil";
 
 /**
  * Generated class for the HomePage page.
@@ -33,6 +33,10 @@ export class HomePage  implements OnInit{
   constructor(public menu: MenuController, private _postService : PostProvider,
               private nav: NavController,private alertCtrl: AlertController,
               private loadingCtrl: LoadingController) {
+  }
+
+  pageEditarDados(){
+    this.nav.push(EditarPerfilPage);
   }
 
   logout(){

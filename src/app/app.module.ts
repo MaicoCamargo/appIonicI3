@@ -16,6 +16,7 @@ import {NewPostPage} from "../pages/new-post/new-post";
 import {AllPostsPage} from "../pages/all-posts/all-posts";
 import {HomePage} from "../pages/home/home";
 import {RegistrarSerPage} from "../pages/registrar-ser/registrar-ser";
+import {EditarPerfilPage} from "../pages/editar-perfil/editar-perfil";
 
 
 
@@ -27,6 +28,7 @@ import {RegistrarSerPage} from "../pages/registrar-ser/registrar-ser";
     AllPostsPage,
     HomePage,
     RegistrarSerPage,
+    EditarPerfilPage
 
   ],
   imports: [
@@ -46,7 +48,7 @@ import {RegistrarSerPage} from "../pages/registrar-ser/registrar-ser";
     AllPostsPage,
     HomePage,
     RegistrarSerPage,
-
+    EditarPerfilPage
 
 
   ],
