@@ -5,6 +5,7 @@ import {PostProvider} from "../../providers/post/postProvider";
 import {AllPostsPage} from "../all-posts/all-posts";
 import {MeusPostPage} from "../meus-post/meus-post";
 import {NewPostPage} from "../new-post/new-post";
+import {LoginPage} from "../login/login";
 
 /**
  * Generated class for the HomePage page.
@@ -29,6 +30,14 @@ export class HomePage  implements OnInit{
               private nav: NavController,private alertCtrl: AlertController,
               private loadingCtrl: LoadingController) {
   }
+
+  logout(){
+    sessionStorage.removeItem('logado');
+    sessionStorage.clear();
+    this.nav.setRoot(LoginPage);
+  }
+
+
 
   limparPesquisa(){
     this.posts = null;
