@@ -37,6 +37,58 @@ export class HomePage  implements OnInit{
     this.nav.setRoot(LoginPage);
   }
 
+  modalReagir(idPost) {
+
+    let alert = this.alertCtrl.create();
+
+    alert.setTitle('Reagir com... ');
+
+    alert.addInput({
+      type: 'radio',
+      label: 'Like',
+      value: '1',
+      checked: true,
+    });
+
+    alert.addInput({
+      type: 'radio',
+      label: 'Deslike',
+      value: '2',
+      checked: false,
+    });
+
+    alert.addInput({
+      type: 'radio',
+      label: 'WooW',
+      value: '3',
+      checked: false,
+    });
+
+    alert.addInput({
+      type: 'radio',
+      label: 'Grr',
+      value: '4',
+      checked: false,
+    });
+
+    alert.addInput({
+      type: 'radio',
+      label: 'Interesaante',
+      value: '5',
+      checked: false,
+    });
+
+    alert.addButton('Cancelar');
+
+    alert.addButton({
+      text: 'É isso',cssClass:'btn btn-success',
+      handler: data => {
+        this._postService.getReacaoPost(idPost,data).subscribe(retorno => console.log(retorno));
+      }
+    });
+    alert.present();
+
+  }
 
 
   limparPesquisa(){
