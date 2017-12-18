@@ -90,6 +90,25 @@ export class HomePage  implements OnInit{
 
   }
 
+  modalComentar(idPost){
+
+    let prompt = this.alertCtrl.create({
+      title: 'Comentar',
+      message: "Digite o seu comentário",
+      inputs: [{
+        placeholder: 'comentario...',
+        id: 'teste'
+      },],
+      buttons: [
+        { text: 'Cancelar' }, {  text: 'Salvar', handler: data => {
+            this._postService.getComentario(idPost ,data.valueOf()).subscribe(
+              retorno => {console.log(retorno.json())}
+            ) } }
+      ]
+    });
+    prompt.present();
+  }
+
 
   limparPesquisa(){
     this.posts = null;
@@ -113,6 +132,7 @@ export class HomePage  implements OnInit{
 
   pesquisarHashTag(termoPesquisa){
     this._postService.getPostPorHashTag(termoPesquisa).subscribe(retorno => {this.posts = retorno.json()});
+
   }
 
   /**

@@ -28,12 +28,11 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <p text-center="">-------------------</p>
-  <strong>aqui você pode pesquisar por uma determinada # </strong>
   <form #pesquisar="ngForm">
     <ion-item>
+      <strong>Pesquise por uma determinada # </strong>
       <ion-label color="primary" floating># pesquisar por</ion-label>
-      <ion-input #pesquisa type="text"></ion-input>
+      <ion-input #pesquisa type="text" placeholder="pesquise por uma #" ></ion-input>
     </ion-item>
     <button ion-button block (click)="pesquisarHashTag(pesquisa.value)">Pesquisar por HashTag</button>
   </form>
@@ -69,12 +68,12 @@
           <ion-col>
             <button ion-button icon-left clear small>
               <ion-icon name="text"></ion-icon>
-              <div>Commentar</div>
+              <div (click)="modalComentar(post.idPost)">Commentar</div>
             </button>
           </ion-col>
           <ion-col center text-center>
             <ion-note>
-              Denunciar - rating
+              Denunciar
             </ion-note>
           </ion-col>
         </ion-row>
